@@ -29,7 +29,7 @@ app.use(morgan('dev'));
 app.use(bodyparser.urlencoded({extended: false}));
 app.use(bodyparser.json());
 app.use('/light', lightRoutes);
-app.use("/grupp3", grupp3);
+app.use("/grupp3", grupp3Routes);
 
 
 // app.use((req, res, next) => {
