@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const bodyparser = require('body-parser');
 const lightRoutes= require('./api/routes/light');
 const grupp3Routes = require("./api/routes/grupp3");
+const grupp3Routes = require("./api/routes/grupp10_light");
 
 var cors = require('cors');
 app.use((req, res, next) => {
@@ -30,6 +31,7 @@ app.use(bodyparser.urlencoded({extended: false}));
 app.use(bodyparser.json());
 app.use('/light', lightRoutes);
 app.use("/grupp3", grupp3Routes);
+app.use("/grupp10_light", grupp10_lightRoutes);
 
 
 // app.use((req, res, next) => {
