@@ -259,7 +259,7 @@ router.patch('/', (req, res) => { //  '/'= indexfilen i localhost/products/   re
 
 
 
-var pool = mysql.createPool({
+/*var pool = mysql.createPool({
 
     connectionLimit: 100,
 
@@ -279,7 +279,7 @@ var pool = mysql.createPool({
 
     multipleStatements: true,
 
-});
+});*/
 
 
 
