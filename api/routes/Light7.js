@@ -2,17 +2,17 @@ const express = require("express");
 const router = express();
 var mysql = require("mysql");
 var con = mysql.createConnection({
-    host: "iot.abbindustrigymnasium.se",
-    user: "ljuside7",
-    password: "sigtunabo",
-    database: "ljuside7"
+    host: "iot.abbindustrigymnasium.se",  //host 
+    user: "ljuside7",  // användarnamn till databasen
+    password: "sigtunabo",  //lösenord 
+    database: "ljuside7"   // databasens namn
 });
 
 con.connect(function (err) {
     if (err) throw err;
 });
 
-router.get("/", (req, res)=> {
+router.get("/", (req, res)=> { // hämtar alla värden från databasen
         res.status(200).json({
             message: "light:",
             result: Values_fromDB});
@@ -44,12 +44,13 @@ getLight().then(response =>{ //kör funktionen
 }, null, true, "America/Los-angeles"); //anger tidszonen som cron ska gå efter
 
 
-router.get("/:Name", (req, res)=> {
+router.get("/:Name", (req, res)=> { 
+    console.log(req.params.Name);
     var found=false;
     var outputValue;
     Values_fromDB.forEach(element => {
         console.log(element.Name);
-        if (element.Name== req.params.Name){
+        if (element.Name== req.params.id){
             found=true;
             outputValue = element;
         }
@@ -60,10 +61,7 @@ router.get("/:Name", (req, res)=> {
     }
 else 
 {
-    res.status(200).json({
-        message: "Light7",
-        result: outputValue
-    });
+    res.status(200).json(outputValue);
     console.log(outputvalue);
 }
 }); 
