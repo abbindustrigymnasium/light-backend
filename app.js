@@ -5,6 +5,7 @@ const bodyparser = require('body-parser');
 const lightRoutes= require('./api/routes/light');
 const grupp3Routes = require("./api/routes/grupp3");
 const grupp10_lightRoutes = require("./api/routes/grupp10_light");
+const grupp4_lightroutes = require("./api/routes/grupp4_light");
 
 var cors = require('cors');
 app.use((req, res, next) => {
@@ -32,6 +33,7 @@ app.use(bodyparser.json());
 app.use('/light', lightRoutes);
 app.use("/grupp3", grupp3Routes);
 app.use("/grupp10_light", grupp10_lightRoutes);
+app.use("/grupp4_light", grupp4_lightRoutes);
 
 
 // app.use((req, res, next) => {
