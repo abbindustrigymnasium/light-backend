@@ -6,7 +6,7 @@ const lightRoutes= require('./api/routes/light');
 const grupp3Routes = require("./api/routes/grupp3");
 const grupp10_lightRoutes = require("./api/routes/grupp10_light");
 const grupp8Routes = require("./api/routes/grupp-8")
-const grupp4_lightroutes = require("./api/routes/grupp4_light");
+const grupp4_lightRoutes = require("./api/routes/grupp4_light");
 
 var cors = require('cors');
 app.use((req, res, next) => {
