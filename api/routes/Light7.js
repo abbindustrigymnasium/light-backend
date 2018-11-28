@@ -68,7 +68,7 @@ else
 
 router.post("", (req, res)=> {
     const Lamp = {
-        id: req.body.id, //tar värdet du har angett till namn i json och gör om den till en variabel.
+        id: req.params.id, //tar värdet du har angett till namn i json och gör om den till en variabel.
         temp: req.body.temp, 
         ljus: req.body.ljus
     };
