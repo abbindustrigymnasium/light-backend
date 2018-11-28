@@ -66,7 +66,7 @@ else
 }
 }); 
 
-router.post("", (req, res)=> {
+router.post("/:id", (req, res)=> {
     const Lamp = {
         id: req.params.id, //tar värdet du har angett till namn i json och gör om den till en variabel.
         temp: req.body.temp, 
