@@ -136,7 +136,7 @@ router.patch('/:id', (req, res, next) => {
             
             res.status(200).json({
                 message: "Lamp adjusted",
-                result
+                result : result
             });
             }
             else
