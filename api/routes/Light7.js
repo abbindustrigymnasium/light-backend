@@ -50,7 +50,7 @@ router.get("/:Name", (req, res)=> {
     var outputValue;
     Values_fromDB.forEach(element => {
         console.log(element.Name);
-        if (element.Name== req.params.id){
+        if (element.Name== req.params.Name){
             found=true;
             outputValue = element;
         }
