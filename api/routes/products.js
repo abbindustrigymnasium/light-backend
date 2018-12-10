@@ -41,7 +41,7 @@ router.get("/:lampName", (req, res) => {
     var found=false;
     var Outputvalue;
     Values_fromDB.forEach(element => {
-        if (element.name == req.params.lampName) {
+        if (element.Name == req.params.lampName) {
             found=true;
             Outputvalue = element;
         }
