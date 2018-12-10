@@ -76,7 +76,9 @@ router.patch("", (req, res, next) => {
         querystring += " strength = " + product.strength + ",";
   } if (product.onoroff != null){
         querystring += " onoroff= " + product.onoroff + ",";
-}
+  } if (product.brightness != null){
+        querystring += " brightness= " + product.brightness + ",";
+  }
    var name = product.name;
    querystring = querystring.slice(0, -1);
    querystring += " WHERE name = ?";
