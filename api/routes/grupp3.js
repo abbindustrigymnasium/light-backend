@@ -64,9 +64,8 @@ router.patch("", (req, res, next) => {
       name: req.body.name,
       temperature: req.body.temperature,
       strength: req.body.strength,
-      lightsensor: req.body.lightsensor,
-      onoroff: req.body.onoroff
-
+      onoroff: req.body.onoroff,
+      brightness: req.body.onoroff
   };
 //'UPDATE `grupp3lampadata` SET `temperature`= ?, `strength`= ?, `onoroff`= ? WHERE `name` = ?'
   let querystring= 'UPDATE `grupp3lampadata` SET';
