@@ -107,7 +107,7 @@ router.patch('/', (req, res, next) => {         // Vår PATCH som updaterar vär
 
         return new Promise(function(resolve,reject){
             
-            con.query("UPDATE `lampa` SET `Styrka`=? , `Mode`= ? , `warm` = ?  WHERE `Namn` =  ?",[ljusupd[0] , ljusupd[1], ljusupd[2], ljusupd[3]], function (err, result, fields) {
+            con.query("UPDATE `lampa` SET `Styrka`=? , `Mode`= ? , `warm` = ?  WHERE `Namn` =  ?",[ljusupd[0] , ljusupd[1], ljusupd[3], ljusupd[2]], function (err, result, fields) {
                               // Här uppdaterar vi tabellen lampa och sätter allting till okända värden då namnet är okänt.
                               // Sedan tar den det första värdet i ljusupd som är styrka för att lägga in ett nytt värde. Den tar det första, andra och tredje värdet i array.
 
