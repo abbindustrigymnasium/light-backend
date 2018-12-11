@@ -150,7 +150,7 @@ router.patch('/:lampName', (req, res, next) => {
     });
 });
 
-router.post('/google_home/:lampName', (req, res, next) => {
+router.post('/google_home/:lampName&:onoff', (req, res, next) => {
     const light = {
         onoff: req.params.onoff,
     }
