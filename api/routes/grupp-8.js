@@ -158,7 +158,7 @@ router.post('/google_home/:lampName', (req, res, next) => {
     var updateLight = function(){
         return new Promise(function(resolve, reject){
 
-            con.query('UPDATE `lightstatus` SET `onoff`= ? WHERE `name` = ?',[light.onoff, req.body.lampName], function (error, results) {
+            con.query('UPDATE `lightstatus` SET `onoff`= ? WHERE `name` = ?',[light.onoff, req.params.lampName], function (error, results) {
                 if (error) 
                 return reject (error);
                 else
