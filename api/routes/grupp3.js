@@ -65,7 +65,8 @@ router.patch("", (req, res, next) => {
       temperature: req.body.temperature,
       strength: req.body.strength,
       onoroff: req.body.onoroff,
-      brightness: req.body.brightness
+      brightness: req.body.brightness,
+      previousTime: req.body.previousTime,
   };
 //'UPDATE `grupp3lampadata` SET `temperature`= ?, `strength`= ?, `onoroff`= ? WHERE `name` = ?'
   let querystring= 'UPDATE `grupp3lampadata` SET';
@@ -77,6 +78,8 @@ router.patch("", (req, res, next) => {
         querystring += " onoroff= " + product.onoroff + ",";
   } if (product.brightness != null){
         querystring += " brightness= " + product.brightness + ",";
+  } if (product.previousTime != null){
+        querystring += " previousTime= " + product.previousTime + ",";
   }
    var name = product.name;
    querystring = querystring.slice(0, -1);

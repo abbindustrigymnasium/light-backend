@@ -32,7 +32,7 @@ new CronJob("* * * * * *", function() {
         });
     }
     GetLight().then(response => {
-        Values_fromDB = response;
+       Values_fromDB = response;
         console.log(Values_fromDB);
     })
 }, null, true, "America/Los_Angeles");
@@ -86,11 +86,12 @@ createProduct().then(Theproduct => {
 });
 
 router.patch("/", (req, res) => {
-    Lights = [req.body.Strength, req.body.Name];
+    Lights = [req.body.Name, req.body.Cold, req.body.Hot];
     console.log(req.body);
+    console.log("lool");
     var createProduct = function () {
         return new Promise(function (resolve, reject) {
-            connection.query("UPDATE ddosmonster SET `Strength` = ? WHERE `Name` = ?", [Lights[0], Lights[1]], function (error, result) { //switch?
+            connection.query("UPDATE ddosmonster SET `Cold` = ?, ´Hot´ = ? WHERE `Name` = ?", [Lights[1], Lights[2], Lights[0]], function (error, result) { //switch?
                 if (error) {
                     return reject(error);
                 } else {

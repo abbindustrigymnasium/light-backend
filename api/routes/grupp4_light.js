@@ -63,13 +63,13 @@ router.get('/:lampaNamn', (req, res) => {     // GET som hämtar värden från d
 
 
 router.post('/', (req, res) => {                                       // POST som skickar nya värden till databasen.
-    const ljuspost=[req.body.Namn, req.body.Styrka, req.body.Mode];   // Vår konst har värdena Namn, Styrka och Mode.
+    const ljuspost=[req.body.Namn, req.body.Styrka, req.body.Mode, req.body.warm];   // Vår konst har värdena Namn, Styrka och Mode.
 
 
     var createProduct = function(){                           
         return new Promise(function(resolve,reject){ 
             console.log(ljuspost);
-            con.query('INSERT INTO lampa(Namn, Styrka, Mode) VALUES ?',[[ljuspost]], function(err,result) { /* Lägger in våra värden i tabellen lampa och värdena
+            con.query('INSERT INTO lampa(Namn, Styrka, Mode, warm) VALUES ?',[[ljuspost]], function(err,result) { /* Lägger in våra värden i tabellen lampa och värdena
                                                                                                  som den lägger in är Namn, styrka och mode. I den ordningen. 
                                                                                                 Där den placerar dessa värden är i vår ljuspost.*/
       
@@ -102,12 +102,12 @@ router.post('/', (req, res) => {                                       // POST s
 router.patch('/', (req, res, next) => {         // Vår PATCH som updaterar värdena i tabellen
 
     var UpdateProduct = function(){
-    const ljusupd=[req.body.Styrka, req.body.Mode, req.body.Namn];   // Vår ljusupd har värdena Styrka, Mode och Namn som ska uppdateras
+    const ljusupd=[req.body.Styrka, req.body.Mode, req.body.Namn, req.body.warm];   // Vår ljusupd har värdena Styrka, Mode och Namn som ska uppdateras
                                                                      // ljusupd är en array med dessa värden.
 
         return new Promise(function(resolve,reject){
             
-            con.query("UPDATE `lampa` SET `Styrka`=? , `Mode`= ? WHERE `Namn` =  ?",[ljusupd[0] , ljusupd[1], ljusupd[2]], function (err, result, fields) {
+            con.query("UPDATE `lampa` SET `Styrka`=? , `Mode`= ? , `warm` = ?  WHERE `Namn` =  ?",[ljusupd[0] , ljusupd[1], ljusupd[2], ljusupd[3]], function (err, result, fields) {
                               // Här uppdaterar vi tabellen lampa och sätter allting till okända värden då namnet är okänt.
                               // Sedan tar den det första värdet i ljusupd som är styrka för att lägga in ett nytt värde. Den tar det första, andra och tredje värdet i array.
 
