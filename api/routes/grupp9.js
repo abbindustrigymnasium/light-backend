@@ -20,7 +20,7 @@ con.connect(function(err){
 
 router.get('/', (req, res, next) => {
 
-    con.query('SELECT * FROM Lampa', function (error, results, fields) {
+    con.query('SELECT * FROM lampa', function (error, results, fields) {
         if (error) throw error;
         res.status(200).json({
             message: 'Getter',
@@ -117,4 +117,5 @@ router.patch('/', (req, res, next) => {
 });
 
 module.exports = router;
+
 
