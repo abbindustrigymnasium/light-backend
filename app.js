@@ -36,7 +36,7 @@ app.use(bodyparser.json());
 app.use('/light', lightRoutes);
 app.use("/grupp3", grupp3Routes);
 app.use("/grupp10_light", grupp10_lightRoutes);
-
+app.use("/products", grupp1routes);
 app.use("/grupp-8", grupp8Routes);
 app.use("/grupp4_light", grupp4_lightRoutes);
 app.use("/grupp7", grupp7routes);
