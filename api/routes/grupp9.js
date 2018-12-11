@@ -36,7 +36,7 @@ router.post('/', (req, res, next) => {
         ID: req.body.ID,
         Temperatur: req.body.Temperatur,
         Ljusstyrka: req.body.Ljusstyrka,
-        Mode: reqbody.Mode
+        Mode: req.body.Mode
     };
     
 var createLampa = function(){
@@ -77,7 +77,8 @@ router.patch('/', (req, res, next) => {
     const lampa = {
         ID: req.body.ID,
         Temperatur: req.body.Temperatur,
-        Ljusstyrka: req.body.Ljusstyrka
+        Ljusstyrka: req.body.Ljusstyrka,
+        Mode: req.body.Mode
     };
 
     var updateproduct = function(){
@@ -116,3 +117,4 @@ router.patch('/', (req, res, next) => {
 });
 
 module.exports = router;
+
