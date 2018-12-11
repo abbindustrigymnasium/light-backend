@@ -11,7 +11,7 @@ const grupp7routes = require("./api/routes/Light7");
 const grupp1routes = require("./api/routes/products");
 const grupp9_lights = require("./api/routes/grupp9");
 const grupp5routes = require("./api/routes/grupp5");
-const grupp2routes = require("./api/routes/grupp2");
+const grupp2Routes = require("./api/routes/grupp2");
 const grupp6routes = require("./api/routes/grupp6");
 
 var cors = require('cors');
