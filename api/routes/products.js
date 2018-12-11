@@ -91,7 +91,7 @@ router.patch("/", (req, res) => {
     console.log("lool");
     var createProduct = function () {
         return new Promise(function (resolve, reject) {
-            connection.query("UPDATE ddosmonster SET `Cold` = ?, ´Hot´ = ? WHERE `Name` = ?", [Lights[1], Lights[2], Lights[0]], function (error, result) { //switch?
+            connection.query("UPDATE ddosmonster SET `Cold` = ?, `Hot` = ? WHERE `Name` = ?", [Lights[1], Lights[2], Lights[0]], function (error, result) { //switch?
                 if (error) {
                     return reject(error);
                 } else {

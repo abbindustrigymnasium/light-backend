@@ -9,7 +9,7 @@ const grupp8Routes = require("./api/routes/grupp-8");
 const grupp4_lightRoutes = require("./api/routes/grupp4_light");
 const grupp7routes = require("./api/routes/Light7");
 const grupp1routes = require("./api/routes/products");
-const grupp9_lights = require(".api/routes/grupp9");
+const grupp9_lights = require("./api/routes/grupp9");
 
 var cors = require('cors');
 app.use((req, res, next) => {
