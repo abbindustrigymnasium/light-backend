@@ -29,9 +29,6 @@ router.get('/', (req, res, next) => {
       });
        
 
-    //res.status(200).json({ 
-       // message: 'Getter'
-  //  });
 });
 
 router.post('/', (req, res, next) => {
@@ -41,11 +38,12 @@ router.post('/', (req, res, next) => {
         Ljusstyrka: req.body.Ljusstyrka
     };
     
-var CreatedLampa = function(){
+var createLampa = function(){
     return new Promise(function(resolve, reject){
+        
         var TheLampa = [Lampa.ID, Lampa.Temperatur, Lampa.Ljusstyrka];
-        console.log(Theproduct);
-        con.query('INSERT INTO Lampa (ID.Temperatur.Ljusstyrka) VALUES ?', [[TheLampa]], function(error, results, fields) {
+        console.log(TheLampa);
+        con.query('INSERT INTO lampa (ID, Temperatur, Ljusstyrka) VALUES ?', [[TheLampa]], function(error, results, fields) {
             if (error)
             return reject (error);
             else 
@@ -71,40 +69,6 @@ createLampa().then( TheLampa => {
 
 }  )
 
-
-router.get('/:LampaID', (req, res, next) => {
-    const name = req.params.LampaID;
-
-    var getproduct = function(){
-        return new Promise(function(resolve, reject){
-            con.query('SELECT * FROM Lampa WHERE ID = ?', [ID], function(error, results, fields) {
-                if (error)
-                return reject (error);
-                else 
-                return resolve(results)
-    
-            })
-        });
-    }
-    
-    
-    getproduct().then( result => {
-        if(result.length==0){
-            res.status(404).json({
-                message:"No such vallues exists."
-            });
-        }
-        else
-    res.status(200).json(result);
-        
-          
-        res.status(500).json({
-    } ).catch(error => {
-            error: error
-        })
-    });
-    
- } );
 
 router.patch('/', (req, res, next) => {
 
@@ -149,46 +113,5 @@ router.patch('/', (req, res, next) => {
     })
     
 });
-
-// router.delete('/', (req, res, next) => {
-
-
-//     const product = {
-//         ID: req.body.ID
-//     };
-
-//     var Destroyproduct = function(){
-//         return new Promise(function(resolve, reject){
-            
-//             con.query('DELETE FROM `Lampa` WHERE ID = ?', [Lampa.ID], function(error, results, fields) {
-//                 if (error)
-//                 return reject (error);
-//                 else 
-//                 return resolve(results)
-    
-//             })
-//         });
-//     }
-    
-    
-//     Destroyproduct().then( result => {
-
-//        if(result.length!=0) {
-//             res.status(200).json({
-//                 message: "Product was deleted."
-//             });
-//         }
-//         else
-//         res.status(404).json(result);{
-            
-//         };   
-       
-//     } ).catch(error => {
-//            res.status(500).json({ 
-//                 error: error
-//         });
-//     })
-    
-// });
 
 module.exports = router;
