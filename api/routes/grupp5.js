@@ -94,17 +94,18 @@ router.post('/', (req, res, next) => {
 router.patch('/:appbelysningName', (req, res) => {
 
     const lampa = {
-        name: req.body.name,
+        name: req.params.appbelysningName,
         påav: req.body.påav,
         varm: req.body.varm,
         kall: req.body.kall,
-        ljusstyrka: req.body.ljusstyrka,
+        ljusstryrka: req.body.ljusstryrka,
     }
+const data = [lampa.påav, lampa.varm, lampa.kall, lampa.ljusstryrka, lampa.name];
 
     var updatelampa = function() {
         return new Promise(function(resolve, reject) {
             
-            con.query('UPDATE `appbelysning` SET `name`=[value-1],`påav`=[value-2],`varm`=[value-3],`kall`=[value-4],`ljusstryrka`=[value-5] WHERE `name` = ?', [[lampa]], function (error, result) {
+            con.query('UPDATE `appbelysning` SET `påav`= ?,`varm`= ?,`kall`= ?,`ljusstryrka`= ? WHERE `name` = ?', data, function (error, result) {
                 if (error)
                 return reject(error);
                 else
@@ -132,5 +133,8 @@ router.patch('/:appbelysningName', (req, res) => {
 });
 
 module.exports = router;
+
+
+
 
 
