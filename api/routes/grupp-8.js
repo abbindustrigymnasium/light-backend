@@ -150,15 +150,15 @@ router.patch('/:lampName', (req, res, next) => {
     });
 });
 
-router.post('/google_home/:lampName', (req, res, next) => {
+router.post('/google_home/:onoff', (req, res, next) => {
     const light = {
-        onoff: req.body.onoff,
+        onoff: req.params.onoff,
     }
 
     var updateLight = function(){
         return new Promise(function(resolve, reject){
 
-            con.query('UPDATE `lightstatus` SET `onoff`= ? WHERE `name` = ?',[light.onoff, req.params.lampName], function (error, results) {
+            con.query('UPDATE `lightstatus` SET `onoff`= ? WHERE `name` = ?',[light.onoff, "Lars"], function (error, results) {
                 if (error) 
                 return reject (error);
                 else
