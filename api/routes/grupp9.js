@@ -118,7 +118,7 @@ router.patch('/', (req, res, next) => {
     var updateproduct = function(){
         return new Promise(function(resolve, reject){
             
-            con.query('UPDATE `lampa` SET `Temperatur`=?, `Ljusstyrka`=?, `Mode`=? WHERE ID = ?', [ lampa.Temperatur, lampa.Ljusstyrka, lampa.Mode, lampa.ID], function(error, results, fields) {
+            con.query('UPDATE `lampa` SET `Temperatur`=?, `Ljusstyrka`=?, `Mode`=? WHERE `ID` = ?', [ lampa.Temperatur, lampa.Ljusstyrka, lampa.Mode, lampa.ID], function(error, results, fields) {
                 if (error)
                 return reject (error);
                 else 
@@ -151,3 +151,4 @@ router.patch('/', (req, res, next) => {
 });
 
 module.exports = router;
+
