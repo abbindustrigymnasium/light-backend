@@ -20,7 +20,7 @@ con.connect(function(err){
 
 router.get('/', (req, res, next) => {
 
-    con.query('SELECT * FROM lampa', function (error, results, fields) {
+    con.query('SELECT * FROM Lampa', function (error, results, fields) {
         if (error) throw error;
         res.status(200).json({
             message: 'Getter',
@@ -71,6 +71,40 @@ createLampa().then( TheLampa => {
 }  )
 
 
+router.get('/:LampaID', (req, res, next) => {
+    const ID = req.params.LampaID;
+
+    var getproduct = function(){
+        return new Promise(function(resolve, reject){
+            con.query('SELECT * FROM lampa WHERE ID = ?', [ID], function(error, results, fields) {
+                if (error)
+                return reject (error);
+                else 
+                return resolve(results)
+    
+            })
+        });
+    }
+    
+    
+    getproduct().then( result => {
+        if(result.length==0){
+            res.status(404).json({
+                message:"No such values exists."
+            });
+        }
+        else
+    res.status(200).json(result);
+        
+          
+       
+    } ).catch(error => {
+        res.status(500).json({    error: error
+        })
+    });  
+    
+ } );
+
 router.patch('/', (req, res, next) => {
 
 
@@ -117,5 +151,3 @@ router.patch('/', (req, res, next) => {
 });
 
 module.exports = router;
-
-
