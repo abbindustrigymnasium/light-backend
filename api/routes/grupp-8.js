@@ -150,6 +150,46 @@ router.patch('/:lampName', (req, res, next) => {
     });
 });
 
+router.patch('beroringsfri_styrning/:lampName', (req, res, next) => {
+
+    const light = {
+        onoff: req.body.onoff
+    }
+
+    var updateLight = function(){
+        return new Promise(function(resolve, reject){
+
+            con.query('UPDATE `lightstatus` SET `onoff`= ? WHERE `name` = ?',[light.onoff, req.params.lampName], function (error, results) {
+                if (error) 
+                return reject (error);
+                else
+                return resolve(results)
+            });
+        
+        } )
+
+    }
+
+    updateLight().then(result => {
+
+   if (result.affectedRows!=0) {
+        
+        res.status(200).json(result);
+    
+    }
+    
+    else
+    res.status(404).json({
+        message: "Update imposible, lack of values"
+        });
+
+    }   ).catch(error => {
+        res.status(500).json({
+            error: error
+        })
+    });
+});
+
 router.post('/google_home/:onoff', (req, res, next) => {
     const light = {
         onoff: req.params.onoff,
