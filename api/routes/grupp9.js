@@ -88,7 +88,7 @@ cron.schedule('* * * * * *', () => {
 
 router.get('', (req, res) => {
   res.status(200).json(Values_fromDB[0]);
-  console.log(Values_fromDB[0]);
+  console.log(Values_fromDB);
  
 });
 
@@ -150,7 +150,7 @@ router.get('/:LampaID', (req, res, next) => { // GET hämtar värdena i database
             });
         }
         else
-    res.status(200).json(result); // Om det funnkar ska resultat skickas. 
+    res.status(200).json(result[0]); // Om det funnkar ska resultat skickas. 
         
           
        
