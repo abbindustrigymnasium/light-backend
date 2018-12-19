@@ -80,7 +80,7 @@ cron.schedule('* * * * * *', () => {
     GetLight().then(response =>{
         Values_fromDB = response;
 
-     console.log(Values_fromDB);
+     //console.log(Values_fromDB);
     })
 
 });
@@ -88,7 +88,7 @@ cron.schedule('* * * * * *', () => {
 
 router.get('', (req, res) => {
   res.status(200).json(Values_fromDB[0]);
-  console.log(Values_fromDB);
+  //console.log(Values_fromDB);
  
 });
 
@@ -128,36 +128,36 @@ router.get('', (req, res) => {
 //Vi kommenterade koden ovanför för att vi inte behöver den i den versionen appen är i idag, men vi vet inte om vi vill ändra på det i framtiden
 
 router.get('/:LampaID', (req, res, next) => { // GET hämtar värdena i databasen, å det inte nollställs om man går ut i appen o sen in igen. 
-    const ID = req.params.LampaID;
-
-    var getproduct = function(){  // Denna GET hämtar specifika värden. 
-        return new Promise(function(resolve, reject){
-            con.query('SELECT * FROM lampa WHERE ID = ?', [ID], function(error, results, fields) {
-                if (error)
-                return reject (error);
-                else 
-                return resolve(results)
+    // const ID = req.params.LampaID;
+    res.status(200).json(Values_fromDB[0]);
+    // var getproduct = function(){  // Denna GET hämtar specifika värden. 
+    //     return new Promise(function(resolve, reject){
+    //         con.query('SELECT * FROM lampa WHERE ID = ?', [ID], function(error, results, fields) {
+    //             if (error)
+    //             return reject (error);
+    //             else 
+    //             return resolve(results)
     
-            })
-        });
-    }
+    //         })
+    //     });
+    // }
     
     
-    getproduct().then( result => { // Vad som ska ske om det inte fungerar. 
-        if(result.length==0){
-            res.status(404).json({
-                message:"No such values exists."
-            });
-        }
-        else
-    res.status(200).json(result[0]); // Om det funnkar ska resultat skickas. 
+    // getproduct().then( result => { // Vad som ska ske om det inte fungerar. 
+    //     if(result.length==0){
+    //         res.status(404).json({
+    //             message:"No such values exists."
+    //         });
+    //     }
+    //     else
+    // res.status(200).json(result[0]); // Om det funnkar ska resultat skickas. 
         
           
        
-    } ).catch(error => {
-        res.status(500).json({    error: error // Berättar om ytterligare ett error. 
-        })
-    });  
+    // } ).catch(error => {
+    //     res.status(500).json({    error: error // Berättar om ytterligare ett error. 
+    //     })
+    // });  
     
  } );
 
